@@ -1,0 +1,49 @@
+body {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 18px;
+}
+
+/* HEADER */
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em 0.5em 1em 0.5em;
+  background-color: #767ab9;
+  color: white;
+}
+
+header a {
+  color: white;
+  text-decoration: none;
+}
+
+/* GENERAL PAGE */
+main {
+  margin: 2em auto 0 auto;
+  max-width: 650px;
+}
+
+/* START SCREEN */
+.start-screen {
+  text-align: center;
+  padding-top: 1em;
+}
+
+.start-screen h1 {
+  font-size: 2em;
+  font-weight: bolder;
+  margin: 1em auto 1em auto;
+}
+
+.about {
+  margin-bottom: 2em;
+}
+
+button {
+  font-size: 18px;
+  padding: 3px 10px;
+  color: white;
+  background-color: #767ab9;
+  border: none;
+  border-radius: 5px;
+}
