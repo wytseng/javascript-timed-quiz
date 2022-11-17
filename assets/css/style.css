@@ -22,9 +22,9 @@ header a {
 }
 
 /* GENERAL STYLING */
-main {
+.wrapper {
   max-width: 650px;
-  margin: 2em auto 0 auto;
+  margin: 4em auto 0 auto;
 }
 button {
   font-size: 18px;
@@ -47,15 +47,15 @@ button:hover {
 }
 
 /* START SCREEN */
-#start-screen {
-  text-align: center;
-  padding-top: 1em;
-}
 
-#start-screen h1 {
+h1 {
   font-size: 2em;
   font-weight: bolder;
   margin: 1em auto 1em auto;
+}
+
+#start-screen {
+  text-align: center;
 }
 
 .about {
@@ -92,4 +92,34 @@ p {
 input[type = "text"] {
   padding: 4px 6px;
   font-size: 16px;
+}
+
+/* Highscores Page */
+
+ol {
+  list-style-position: inside;
+  margin-bottom: 2em;
+}
+
+ol li {
+  padding: 4px;
+}
+
+ol li:nth-child(odd) {
+  background-color: #d8daef;
+}
+
+#highscores a {
+  padding: 3px 10px;
+  color: white;
+  text-decoration: none;
+  background-color: #767ab9;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#highscores a:hover {
+  background-color: #302c6f;
+  transition: all 0.5s;
 }

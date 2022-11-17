@@ -12,15 +12,15 @@
 <body>
   <header>
     <div class="highest-score" id="highest-score">
-      <a href="#"> > Highest Score</a>
+      <a href="highscores.html"> > Highest Score</a>
     </div>
     <div class="timer">
       <p>Time: <span id="time-count">0</span></p>
     </div>
   </header>
 
-  <main>
-    <div id="start-screen">
+  <main class="wrapper">
+    <div id="start-screen"">
       <h1>JavaScript Timed Challenge</h1>
       <div class="about">
         <p>There are a total of 5 questions related to JavaScript. You will have an average of 15 seconds to work on each question. Each wrong answer will penalize your timer by 15 seconds.</p>
@@ -40,11 +40,12 @@
     <div id="end-screen" class="hide">
       <h2>All done!</h2>
       <p>Your final score is <span id="score">0</span>.</p>
-      <form>
+      <p>
         Enter initials: <input type="text" id="initials"/>
-        <button type="submit" id="submit">Submit</button> 
-      </form>
+        <button type="button" id="submit">Submit</button> 
+      </p>
     </div>
+
   </main>
 
   <script src="./assets/js/script.js"></script>

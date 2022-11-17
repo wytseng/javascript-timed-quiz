@@ -17,7 +17,7 @@ var questions = [
   },
   {
     question: "Inside which HTML element do we put the JavaScript?",
-    choices: ["\<script\>", "javascript", "<scripting>", "<js>"],
+    choices: ["&lt;script&gt;", "&lt;javascript&gt;", "&lt;scripting&gt;", "&lt;js&gt;"],
     answer: "<script>",
   },
   {
@@ -36,7 +36,6 @@ var questionScreen = document.getElementById("question-screen");
 var totalTime = questions.length * 15;
 var currentIndex = 0;
 var timer;
-var highscores = [];
 
 // starts the quiz and timer 
 function startQuiz() {
@@ -71,7 +70,7 @@ function renderQuestions() {
   }
 
   questionEL.innerHTML = questions[currentIndex].question;
-  document.getElementById("question-number").innerHTML = (currentIndex + 1);
+  document.getElementById("question-number").innerHTML = currentIndex;
 
   var choices = questions[currentIndex].choices;
   for (var i = 0; i < choices.length; i++) {
@@ -90,12 +89,14 @@ function checkAnswer(event) {
   // check if the element triggering the click is a choice element
   if (event.target.id === "choice") {
     // checks if the answer is correct 
-    if (event.target.value === questions[currentIndex].answer) {
-      console.log(event.target.value + " = " + questions[currentIndex].answer);
-    } else {
-      console.log("question " + (currentIndex+1) + " is incorrect");
-      totalTime = totalTime - 15;
+    if (event.target.value !== questions[currentIndex].answer) {
+      totalTime -= 15;
+      if (totalTime < 0 ) {
+        totalTime = 0;
+      }
     }
+
+    timerEl.textContent = totalTime;
   
     if (totalTime <= 0 || currentIndex >= (questions.length-1)) {
       endGame();
@@ -109,10 +110,34 @@ function checkAnswer(event) {
 // displays the ending screen 
 function endGame() {
   clearInterval(timer);
+
   questionScreen.setAttribute("class", "hide");
   document.getElementById("end-screen").removeAttribute("class", "hide");
 
   document.getElementById("score").textContent = totalTime;
+}
+
+function checkEnter(event) {
+  if (event.key === "Enter") {
+    saveHighscore();
+  }
+}
+
+function saveHighscore() {
+  var initials = document.getElementById("initials").value.trim();
+
+  if (initials !== '') {
+    var highscores = JSON.parse(localStorage.getItem("highscores")) || [] ;
+  
+    var newScore = {
+      initials: initials,
+      score: totalTime
+    };
+  
+    highscores.push(newScore);
+    localStorage.setItem("highscores", JSON.stringify(highscores));
+    window.location.href = "highscores.html";
+  }
 }
 
 // Starts the quiz 
@@ -121,19 +146,6 @@ document.getElementById("start-quiz").addEventListener("click", startQuiz);
 // Checks accuracy of the answer chosen
 document.getElementById("choices").addEventListener("click", checkAnswer);
 
-function saveHighscore() {
-  var initials = document.getElementById("initials").value.trim();
-
-  var newScore = {
-    initials: initials,
-    score: totalTime
-  };
-
-  highscores.push(newScore);
-  highscores = highscores.sort(function(a, b) {return a.score - b.score});
-  console.log(highscores);
-  localStorage.setItem("highscores", highscores);
-}
-
 // Submit score
-document.getElementById("submit").addEventListener("submit", saveHighscore);
+document.getElementById("submit").addEventListener("click", saveHighscore);
+document.getElementById("initials").addEventListener("keyup", checkEnter);
