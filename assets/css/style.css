@@ -10,7 +10,8 @@ p {
 header {
   display: flex;
   justify-content: space-between;
-  padding: 1em 0.5em 1em 0.5em;
+  align-items: center;
+  padding: 0 1em 0 1em;
   background-color: #767ab9;
   color: white;
 }
@@ -20,10 +21,24 @@ header a {
   text-decoration: none;
 }
 
-/* GENERAL PAGE */
+/* GENERAL STYLING */
 main {
   max-width: 650px;
   margin: 2em auto 0 auto;
+}
+button {
+  font-size: 18px;
+  padding: 3px 10px;
+  color: white;
+  background-color: #767ab9;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #302c6f;
+  transition: all 0.5s;
 }
 
 /* toggle dv display */
@@ -32,12 +47,12 @@ main {
 }
 
 /* START SCREEN */
-.start-screen {
+#start-screen {
   text-align: center;
   padding-top: 1em;
 }
 
-.start-screen h1 {
+#start-screen h1 {
   font-size: 2em;
   font-weight: bolder;
   margin: 1em auto 1em auto;
@@ -47,16 +62,22 @@ main {
   margin-bottom: 2em;
 }
 
-button {
-  font-size: 18px;
-  padding: 3px 10px;
-  color: white;
-  background-color: #767ab9;
-  border: none;
-  border-radius: 5px;
+/* QUESTION & END SCREEN */
+.choices {
+  margin-left: 1em;
 }
 
-/* QUESTION & END SCREEN */
+.choices button{
+  display: block;
+  margin: 5px 0 5px 0;
+}
+
+.question-header {
+  display: flex;
+  align-items: center;
+}
+
+/* END SCREEN */
 h2 {
   font-size: 1.5em;
   font-weight: bold;
