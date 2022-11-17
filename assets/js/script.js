@@ -18,7 +18,7 @@ var questions = [
   {
     question: "Inside which HTML element do we put the JavaScript?",
     choices: ["&lt;script&gt;", "&lt;javascript&gt;", "&lt;scripting&gt;", "&lt;js&gt;"],
-    answer: "<script>",
+    answer: "&lt;script&gt;",
   },
   {
     question: "How do you declare a function on JavaScript?",
@@ -31,10 +31,12 @@ var questions = [
 var questionEL = document.getElementById("question");
 var choicesEl = document.getElementById("choices");
 var timerEl = document.getElementById("time-count");
+var answerSheetEl = document.getElementById("answer-sheet");
 var questionScreen = document.getElementById("question-screen");
 
 var totalTime = questions.length * 15;
 var currentIndex = 0;
+var answerCheck = [];
 var timer;
 
 // starts the quiz and timer 
@@ -62,6 +64,17 @@ function startTimer() {
   }, 1000)
 }
 
+function renderAnswerCheck() {
+  if (answerCheck.length !== 0) {
+    if (answerCheck.length === 1) {
+      answerSheetEl.removeAttribute("class", "hide");
+    }
+    var answerCheckEl = document.createElement("p");
+    answerCheckEl.innerHTML = "Question " + (answerCheck.length) + ": " + answerCheck.slice(-1);
+    answerSheetEl.appendChild(answerCheckEl);
+  }
+}
+
 // displays the question at currentIndex 
 function renderQuestions() {
   // clears the choices div if it is not empty 
@@ -82,6 +95,7 @@ function renderQuestions() {
     choiceOptionEl.innerHTML = (i+1) + ". " + choiceOption;
     choicesEl.appendChild(choiceOptionEl);
   }
+  renderAnswerCheck();
 }
 
 // checks the answer 
@@ -91,9 +105,12 @@ function checkAnswer(event) {
     // checks if the answer is correct 
     if (event.target.value !== questions[currentIndex].answer) {
       totalTime -= 15;
+      answerCheck.push("X");
       if (totalTime < 0 ) {
         totalTime = 0;
       }
+    } else {
+      answerCheck.push("O");
     }
 
     timerEl.textContent = totalTime;
@@ -111,6 +128,7 @@ function checkAnswer(event) {
 function endGame() {
   clearInterval(timer);
 
+  renderAnswerCheck();
   questionScreen.setAttribute("class", "hide");
   document.getElementById("end-screen").removeAttribute("class", "hide");
 
