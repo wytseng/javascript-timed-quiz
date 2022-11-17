@@ -1,9 +1,47 @@
+/* SITEWIDE STYLING */
 body {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size: 18px;
 }
+
+h1 {
+  font-size: 2em;
+  font-weight: bolder;
+  margin: 1em auto 1em auto;
+}
+
+h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 1em auto 1em auto;
+}
+
 p {
-  margin: 0;
+  margin: 1em auto 1em auto;
+}
+
+.wrapper {
+  max-width: 650px;
+  margin: 4em auto 0 auto;
+  padding: 0 0.5em 0 0.5em;
+}
+button {
+  font-size: 18px;
+  padding: 3px 10px;
+  color: white;
+  background-color: #767ab9;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #302c6f;
+  transition: all 0.5s;
+}
+
+.hide {
+  display: none;
 }
 
 /* HEADER */
@@ -21,40 +59,9 @@ header a {
   text-decoration: none;
 }
 
-/* GENERAL STYLING */
-.wrapper {
-  max-width: 650px;
-  margin: 4em auto 0 auto;
-}
-button {
-  font-size: 18px;
-  padding: 3px 10px;
-  color: white;
-  background-color: #767ab9;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
 
-button:hover {
-  background-color: #302c6f;
-  transition: all 0.5s;
-}
-
-/* toggle dv display */
-.hide {
-  display: none;
-}
-
-/* START SCREEN */
-
-h1 {
-  font-size: 2em;
-  font-weight: bolder;
-  margin: 1em auto 1em auto;
-}
-
-#start-screen {
+/* START SCREEN STYLING*/
+.start-screen {
   text-align: center;
 }
 
@@ -62,7 +69,7 @@ h1 {
   margin-bottom: 2em;
 }
 
-/* QUESTION SCREEN */
+/* QUESTION SCREEN STYLING */
 .choices {
   margin-left: 1em;
 }
@@ -77,6 +84,13 @@ h1 {
   align-items: center;
 }
 
+/* END SCREEN STYLING */
+input[type = "text"] {
+  padding: 4px 6px;
+  font-size: 16px;
+}
+
+/* ANSWER FEEDBACK STYLING */
 #answer-sheet {
   background-color: #d8daef;
   width: 25%;
@@ -91,25 +105,7 @@ h1 {
   padding: 2px;
 }
 
-/* END SCREEN */
-h2 {
-  font-size: 1.5em;
-  font-weight: bold;
-  margin: 1em auto 1em auto;
-}
-
-p {
-  margin: 1em auto 1em auto;
-}
-
-
-input[type = "text"] {
-  padding: 4px 6px;
-  font-size: 16px;
-}
-
-/* Highscores Page */
-
+/* HIGHSCORES PAGE STYLING */
 ol {
   list-style-position: inside;
   margin-bottom: 2em;
@@ -137,3 +133,11 @@ ol li:nth-child(odd) {
   background-color: #302c6f;
   transition: all 0.5s;
 }
+
+/*  MINIMUM RESPONSIVE CSS  */
+@media screen and (max-width: 484px) {
+  #answer-sheet {
+    width: 40%;
+  }
+}
+  
